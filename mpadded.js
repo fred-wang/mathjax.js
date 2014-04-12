@@ -7,17 +7,22 @@
 
 (function () {
     window.addEventListener("load", function () {
-        // Insert MathJax.js if the <mpadded> element is not supported.
-        var box, div, script;
-        div = document.createElement("div");
-        div.innerHTML = "<math xmlns='http://www.w3.org/1998/Math/MathML'><mpadded height='23px' width='77px'/></math>";
-        document.body.appendChild(div);
-        box = div.firstChild.firstChild.getBoundingClientRect();
-        document.body.removeChild(div);
-        if (Math.abs(box.height - 23) > 1  || Math.abs(box.width - 77) > 1) {
-            script = document.createElement("script");
-            script.src = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML";
-            document.head.appendChild(script);
+        var box, div, script, namespaceURI;
+        // First check whether the page contains any <math> element.
+        namespaceURI = "http://www.w3.org/1998/Math/MathML";
+        if (document.body.getElementsByTagNameNS(namespaceURI, "math")) {
+            // Verify the support for the <mpadded> element.
+            div = document.createElement("div");
+            div.innerHTML = "<math xmlns='" + namespaceURI + "'><mpadded height='23px' width='77px'/></math>";
+            document.body.appendChild(div);
+            box = div.firstChild.firstChild.getBoundingClientRect();
+            document.body.removeChild(div);
+            if (Math.abs(box.height - 23) > 1  || Math.abs(box.width - 77) > 1) {
+                // Insert the MathJax.js script.
+                script = document.createElement("script");
+                script.src = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML";
+                document.head.appendChild(script);
+            }
         }
     });
 }());
