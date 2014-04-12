@@ -18,7 +18,6 @@
             script = document.createElement("script");
             script.src = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML";
             document.head.appendChild(script);
-            window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
         }
     });
 }());
