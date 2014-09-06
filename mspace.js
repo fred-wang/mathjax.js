@@ -3,9 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 /*jslint browser: true*/
 
-"use strict";
-
 (function () {
+    "use strict";
     window.addEventListener("load", function () {
         var box, div, script, namespaceURI;
         // First check whether the page contains any <math> element.
