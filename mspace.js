@@ -18,7 +18,7 @@
             if (Math.abs(box.height - 23) > 1  || Math.abs(box.width - 77) > 1) {
                 // Insert the MathJax.js script.
                 script = document.createElement("script");
-                script.src = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML";
+                script.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML";
                 document.head.appendChild(script);
             }
         }
